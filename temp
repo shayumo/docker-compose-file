@@ -1,0 +1,47 @@
+https://github.com/fatedier/frp/releases/download/v0.41.0/frp_0.41.0_linux_386.tar.gz
+
+
+systemctl daemon-reload
+
+
+ee
+
+[microsoft-ds]
+type=tcp
+local_ip = 127.0.0.1
+local_port = 445
+remote_port = 445
+use_encryption = false
+use_compression = false
+
+[netbios-ssn]
+type=tcp
+local_ip = 127.0.0.1
+local_port = 139
+remote_port = 139
+use_encryption = false
+use_compression = false
+
+[udp2-netbios-ns]
+type=udp
+local_ip = 127.0.0.1
+local_port = 138
+remote_port = 138
+use_encryption = false
+use_compression = false
+
+[range:tcp_port]
+type = tcp
+local_ip = 127.0.0.1
+local_port = 6010-12000,12001-20021
+remote_port = 6010-12000,12001-20021
+use_encryption = false
+use_compression = false
+
+[range:udp_port]
+type = udp
+local_ip = 127.0.0.1
+local_port = 6010-12000,12001-20021
+remote_port = 6010-12000,12001-20021
+use_encryption = false
+use_compression = false
