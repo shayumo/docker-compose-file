@@ -1,0 +1,24 @@
+version: "3.5"
+services:
+  jellyfin:
+    image: jellyfin/jellyfin
+    container_name: jellyfin
+    network_mode: "host"
+    volumes:
+      - /srv/dev-disk-by-uuid-1b1fb1b6-788a-463f-9226-00ef8d47d8c5/dockerData/jellyfin/config:/config
+      - /srv/dev-disk-by-uuid-1b1fb1b6-788a-463f-9226-00ef8d47d8c5/dockerData/jellyfin/cache:/cache
+      - /srv/dev-disk-by-uuid-1b1fb1b6-788a-463f-9226-00ef8d47d8c5/dockerData/jellyfin/media:/media
+      - /srv/dev-disk-by-uuid-1b1fb1b6-788a-463f-9226-00ef8d47d8c5/dockerData/jellyfin/media2:/media2:ro
+    restart: "unless-stopped"
+    ports:
+      - 8096:8096
+      - 8920:8920
+      - 1900:1900/udp
+      - 7359:7359/udp
+    environment:
+      - JELLYFIN_PublishedServerUrl=192.168.8.88
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Shanghai
+    devices:
+      - /dev/dri:/dev/dri
