@@ -1,0 +1,22 @@
+---
+version: "2.1"
+services:
+  transmission:
+    image: hub-mirror.c.163.com/linuxserver/transmission
+    container_name: transmission
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Shanghai
+      - TRANSMISSION_WEB_HOME=/combustion-release/
+      - USER=admin
+      - PASS=admin
+    volumes:
+      - /srv/dev-disk-by-uuid-1b1fb1b6-788a-463f-9226-00ef8d47d8c5/dockerData/transmission/config:/config
+      - /srv/dev-disk-by-uuid-1b1fb1b6-788a-463f-9226-00ef8d47d8c5/dockerData/transmission/downloads:/downloads
+      - /srv/dev-disk-by-uuid-1b1fb1b6-788a-463f-9226-00ef8d47d8c5/dockerData/transmission/watch:/watch
+    ports:
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
+    restart: unless-stopped
