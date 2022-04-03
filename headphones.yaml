@@ -1,0 +1,17 @@
+---
+version: "2.1"
+services:
+  headphones:
+    image: lscr.io/linuxserver/headphones
+    container_name: headphones
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Shanghai
+    volumes:
+      - /srv/dev-disk-by-uuid-1b1fb1b6-788a-463f-9226-00ef8d47d8c5/dockerData/headphones/config:/config
+      - /srv/dev-disk-by-uuid-1b1fb1b6-788a-463f-9226-00ef8d47d8c5/dockerData/headphones/downloads:/downloads
+      - /srv/dev-disk-by-uuid-1b1fb1b6-788a-463f-9226-00ef8d47d8c5/dockerData/headphones/music:/music
+    ports:
+      - 8181:8181
+    restart: unless-stopped
