@@ -1,13 +1,18 @@
 # Use root/admin as user/password credentials
 version: '3.1'
 services:
-  db:
+  mariadb:
     image: mariadb
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: admin
-  adminer:
+    volumes:
+    - /srv/dev-disk-by-uuid-1b1fb1b6-788a-463f-9226-00ef8d47d8c5/dockerData/mariadb/datadir:/var/lib/mysql
+    - /srv/dev-disk-by-uuid-1b1fb1b6-788a-463f-9226-00ef8d47d8c5/dockerData/mariadb/conf.d:/etc/mysql/conf.d
+    ports:
+    - 3306:3306
+  dminer:
     image: adminer
     restart: always
     ports:
-      - 8080:8080
+      - 33061:8080
