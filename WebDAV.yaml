@@ -1,0 +1,13 @@
+version: '3'
+services:
+  webdav:
+    image: bytemark/webdav
+    restart: always
+    ports:
+      - 8081:80
+    environment:
+      - AUTH_TYPE: Digest
+      - USERNAME: admin
+      - PASSWORD: 1210ying
+    volumes:
+      - /srv/dev-disk-by-uuid-1b1fb1b6-788a-463f-9226-00ef8d47d8c5/dockerData/webdav:/var/lib/dav

@@ -1,0 +1,11 @@
+version: '3.2'
+services:
+  wiznote:
+    image: wiznote/wizserver
+    restart: always
+    ports:
+      - 8081:80
+      - 9269:9269/udp
+    volumes:
+      - /srv/dev-disk-by-uuid-1b1fb1b6-788a-463f-9226-00ef8d47d8c5/dockerData/wiznote:/wiz/storage
+      - /srv/dev-disk-by-uuid-1b1fb1b6-788a-463f-9226-00ef8d47d8c5/dockerData/wiznote/localtime:/etc/localtime
