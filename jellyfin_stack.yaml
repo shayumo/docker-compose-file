@@ -16,7 +16,7 @@ services:
       - 1900:1900/udp
       - 7359:7359/udp
     environment:
-      - JELLYFIN_PublishedServerUrl=192.168.8.88
+      - JELLYFIN_PublishedServerUrl=192.168.1.88
       - PUID=1000
       - PGID=1000
       - TZ=Asia/Shanghai

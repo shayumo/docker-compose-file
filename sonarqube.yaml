@@ -10,4 +10,4 @@ services:
       - /srv/dev-disk-by-uuid-1b1fb1b6-788a-463f-9226-00ef8d47d8c5/dockerData/sonarqube/data:/opt/sonarqube/data
       - /srv/dev-disk-by-uuid-1b1fb1b6-788a-463f-9226-00ef8d47d8c5/dockerData/sonarqube/temp:/opt/sonarqube/temp
     ports:
-      - 9000:9000  
+      - 9100:9000  
