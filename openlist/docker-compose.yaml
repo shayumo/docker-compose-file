@@ -1,0 +1,13 @@
+services:
+  alist:
+    image: 'openlistteam/openlist:latest-aio'
+    container_name: openlist
+    volumes:
+      - '/alist:/opt/openlist/data'
+    ports:
+      - '5244:5244'
+    environment:
+      - PUID=0
+      - PGID=0
+      - UMASK=022
+    restart: unless-stopped
