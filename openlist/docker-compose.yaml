@@ -87,9 +87,6 @@ services:
       - TRANSMISSION_WEB_HOME=${OPLISTDX_TRANSMISSION_WEB_HOME} #optional
       - USER=${OPLISTDX_TRANSMISSION_USER} #optional
       - PASS=${OPLISTDX_TRANSMISSION_PASS} #optional
-      - WHITELIST=${OPLISTDX_TRANSMISSION_WHITELIST} #optional
-      - PEERPORT=${OPLISTDX_TRANSMISSION_PEERPORT} #optional
-      - HOST_WHITELIST=${OPLISTDX_TRANSMISSION_HOST_WHITELIST} #optional
     volumes:
       - "${OPLISTDX_DATA}/transmission:/config"
       - "${OPLISTDX_DOWNLOADS}/transmission:/downloads"
