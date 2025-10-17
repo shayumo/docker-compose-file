@@ -312,7 +312,7 @@ services:
       MINIO_BUCKET_NAME: ${MINIO_DEFAULT_BUCKETS:-milvus}
       MINIO_ACCESS_KEY_ID: ${MINIO_ROOT_USER:-minioadmin}
       MINIO_SECRET_ACCESS_KEY: ${MINIO_ROOT_PASSWORD:-minioadmin123}
-      MINIO_USE_SSL: false
+      MINIO_USE_SSL: "false"
       LOG_LEVEL: debug
     volumes:
       - ./data/milvus:/var/lib/milvus:rw,Z
