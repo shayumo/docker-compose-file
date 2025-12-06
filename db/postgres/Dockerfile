@@ -1,4 +1,4 @@
-# 使用 PostgreSQL 16 基础镜像
+# 使用 PostgreSQL 18 基础镜像
 FROM postgres:18
 
 # 安装 pgvector
