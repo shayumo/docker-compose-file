@@ -20,3 +20,7 @@ volumes:
       type: 'none'
       device: ${DEFAULT_DATABASE_PATH}
       o: 'bind'
+      
+networks:
+  default:
+    driver: bridge
