@@ -10,8 +10,13 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:${DEFAULT_DATABASE_PATH}
+      - postgres_data:/var/lib/postgresql/data
     restart: always
 
 volumes:
   postgres_data:
+    driver: local
+    driver_opts:
+      type: 'none'
+      device: ${DEFAULT_DATABASE_PATH}
+      o: 'bind'
