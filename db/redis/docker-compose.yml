@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    environment:
+      # 可通过外部环境变量设置密码，例如：export REDIS_PASSWORD=yourpass
+      REDIS_PASSWORD: "${REDIS_PASSWORD:-}"
+    volumes:
+      - ./data:/data
+    command: >
+      sh -c 'if [ -n "$REDIS_PASSWORD" ]; then exec redis-server --requirepass "$REDIS_PASSWORD" --appendonly yes; else exec redis-server --appendonly yes; fi'
+    healthcheck:
+      test: ["CMD", "sh", "-c", "if [ -n \"$REDIS_PASSWORD\" ]; then redis-cli -a \"$REDIS_PASSWORD\" ping; else redis-cli ping; fi"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
