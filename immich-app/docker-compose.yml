@@ -72,3 +72,8 @@ services:
 
 volumes:
   model-cache:
+    driver: local
+    driver_opts:
+      type: 'none'
+      device: ${ML_MODEL_CACHE_LOCATION}
+      o: 'bind'
