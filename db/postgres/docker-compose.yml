@@ -3,6 +3,7 @@ services:
     build:
       context: ./
       dockerfile: ./Dockerfile
+    image: postgres18-vchord:1.0.0
     container_name: postgres
     environment:
       POSTGRES_PASSWORD: ${DEFAULT_PASSWORD}
