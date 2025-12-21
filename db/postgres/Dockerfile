@@ -15,5 +15,5 @@ RUN cd /var/lib/apt && \
 
 # RUN psql -U postgres -c 'CREATE EXTENSION IF NOT EXISTS vchord CASCADE;'
 # 设置启动命令
-CMD ["postgres","-c" ,"shared_preload_libraries=vchord,vchord_bm25,vector,pg_tokenizer"]
+CMD ["postgres","-c" ,"shared_preload_libraries=vchord,vector,pg_tokenizer"]
 
