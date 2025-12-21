@@ -1,0 +1,19 @@
+name: jackett
+services:
+  jackett:
+    image: lscr.io/linuxserver/jackett
+    container_name: jackett
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Shanghai
+      - AUTO_UPDATE=true
+    # Use the .env file to set the port dynamically
+    env_file:
+      - .env
+    volumes:
+      - ${CONFIG_PATH}:/config
+      - ${DATA_PATH}:/downloads
+    ports:
+      - ${PORT}:9117
+    restart: unless-stopped
