@@ -1,7 +1,8 @@
 services:
   postgres:
     build:
-      context: .
+      context: ./
+      dockerfile: ./Dockerfile
     container_name: postgres
     environment:
       POSTGRES_PASSWORD: ${DEFAULT_PASSWORD}
