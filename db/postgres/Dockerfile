@@ -3,7 +3,7 @@ FROM postgres:18
 
 # 安装 pgvector
 RUN apt-get update && \
-    apt-get install -y postgresql-18-pgvector && \
+    apt-get install -y postgresql-18-pgvector wget && \
     rm -rf /var/lib/apt/lists/*
 RUN cd /var/lib/apt && \
     wget https://github.com/tensorchord/VectorChord/releases/download/1.0.0/postgresql-18-vchord_1.0.0-1_$(dpkg --print-architecture).deb && \
