@@ -1,0 +1,12 @@
+# cloudflare docker-compose.yml
+version: '3.8'
+services:
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run
+    environment:
+      - TUNNEL_TOKEN=${CLOUDFLARED_TUNNEL_TOKEN}
+    volumes:
+      - ${CLOUDFLARED_CONFIG_DIR:-./cloudflared}:/etc/cloudflared
