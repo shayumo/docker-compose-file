@@ -13,7 +13,7 @@ services:
        - "${OPENCLAW_BRIDGE_PORT:-18790}:18790"
     # 环境变量
     environment:
-      - OPENCLAW_TZ:Asia/Shanghai
+      - OPENCLAW_TZ: Asia/Shanghai
       - HOME: /home/node
       - TERM: xterm-256color
       - OPENCLAW_GATEWAY_TOKEN: ${OPENCLAW_GATEWAY_TOKEN}
