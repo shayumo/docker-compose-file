@@ -3,7 +3,7 @@
 # 用于本地开发和测试
 services:
   openclaw:
-    image: ghcr.io/hiext/openclaw:latest
+    image: ${OPENCLAW_IMAGE:-ghcr.io/hiext/openclaw:latest}
     container_name: openclaw-gateway
     # 端口映射
     ports:
@@ -69,4 +69,4 @@ services:
 # 可选：数据卷定义
 # volumes:
 #   openclaw-data:
-#     driver: local
+#     driver: localservices:
