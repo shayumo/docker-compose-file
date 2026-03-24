@@ -43,6 +43,8 @@ services:
       - redis
       - postgres
 #      - mysql  # Uncomment if using MySQL
+    networks:
+      - new-api-network
     healthcheck:
       test: ["CMD-SHELL", "wget -q -O - http://localhost:3000/api/status | grep -o '\"success\":\\s*true' || exit 1"]
       interval: 30s
@@ -53,17 +55,21 @@ services:
     image: redis:latest
     container_name: redis
     restart: always
+    networks:
+      - new-api-network
 
   postgres:
     image: postgres:15
     container_name: postgres
     restart: always
     environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: 123456  # ⚠️ IMPORTANT: Change this password in production!
-      POSTGRES_DB: new-api
+      POSTGRES_USER: ${POSTGRES_USER:-root}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-123456}
+      POSTGRES_DB: ${POSTGRES_DB:-new-api}
     volumes:
       - pg_data:/var/lib/postgresql/data
+    networks:
+      - new-api-network
 #    ports:
 #      - "5432:5432"  # Uncomment if you need to access PostgreSQL from outside Docker
 
@@ -76,9 +82,20 @@ services:
 #      MYSQL_DATABASE: new-api
 #    volumes:
 #      - mysql_data:/var/lib/mysql
+#    networks:
+#      - new-api-network
 #    ports:
 #      - "3306:3306"  # Uncomment if you need to access MySQL from outside Docker
 
 volumes:
   pg_data:
+    driver: local
+    driver_opts:
+      type: 'none'
+      device: ${POSTGRES_DATA_LOCATION:-./pgdata}
+      o: 'bind'
 #  mysql_data:
+
+networks:
+  new-api-network:
+    driver: bridge
