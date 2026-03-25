@@ -23,7 +23,7 @@ services:
     volumes:
       - ${OPENCLAW_CONFIG_DIR:-~/.openclaw}:/home/node/.openclaw
       - ${OPENCLAW_WORKSPACE_DIR:-~/.openclaw/workspace}:/home/node/.openclaw/workspace
-
+    init: true
     # 重启策略
     restart: unless-stopped
     command:
