@@ -24,6 +24,7 @@ services:
       - "3000:3000"
     volumes:
       - new-api-data:/data
+      - new-api-logs:/app/logs
     environment:
       - SQL_DSN=postgresql://root:123456@postgres:5432/new-api # ⚠️ IMPORTANT: Change the password in production!
 #      - SQL_DSN=root:123456@tcp(mysql:3306)/new-api  # Point to the mysql service, uncomment if using MySQL
@@ -100,6 +101,12 @@ volumes:
       type: 'none'
       device: ${DATA_DIR:-./new-api-data}
       o: 'bind'
+  new-api-logs:
+    driver: local
+    driver_opts:
+      type: 'none'
+      device: ${LOG_DIR:-./new-api-logs}/logs
+      o: 'bind'    
   
 
 networks:
