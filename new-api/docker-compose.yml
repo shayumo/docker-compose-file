@@ -92,20 +92,20 @@ volumes:
     driver: local
     driver_opts:
       type: 'none'
-      device: ${POSTGRES_DATA_LOCATION:-./pgdata}
+      device: ${POSTGRES_DATA_LOCATION}
       o: 'bind'
 #  mysql_data:
   new-api-data:
     driver: local
     driver_opts:
       type: 'none'
-      device: ${DATA_DIR:-./new-api-data}
+      device: ${DATA_DIR}
       o: 'bind'
   new-api-logs:
     driver: local
     driver_opts:
       type: 'none'
-      device: ${LOG_DIR:-./new-api-logs}/logs
+      device: ${LOG_DIR}
       o: 'bind'    
   
 
