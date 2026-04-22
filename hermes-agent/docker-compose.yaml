@@ -7,17 +7,12 @@ services:
     ports:
       - "${GATEWAY_PORT:-8642}:8642"
     volumes:
-      - ${DATA_HOME:-~/.hermes}:/opt/data
+      - hermes-data:/opt/data
     networks:
       - hermes-net
     env_file:
       - path: ./.env
         required: false  
-    # Uncomment to forward specific env vars instead of using .env file:
-    # environment:
-    #   - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
-    #   - OPENAI_API_KEY=${OPENAI_API_KEY}
-    #   - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
     deploy:
       resources:
         limits:
@@ -32,7 +27,7 @@ services:
     ports:
       - "${DASHBOARD_PORT:-9119}:9119"
     volumes:
-      - ${DATA_HOME:-~/.hermes}:/opt/data
+      - hermes-data:/opt/data
     environment:
       - GATEWAY_HEALTH_URL=http://hermes:${GATEWAY_PORT:-8642}
     networks:
@@ -44,7 +39,13 @@ services:
         limits:
           memory: 512M
           cpus: "0.5"
-
+volumes:
+  hermes-data:
+    driver: local
+    driver_opts:
+      type: 'none'
+      device: ${DATA_HOME:-~/.hermes}
+      o: 'bind'
 networks:
   hermes-net:
     driver: bridge
