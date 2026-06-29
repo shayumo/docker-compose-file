@@ -1,4 +1,4 @@
-version: '3.8'
+# https://github.com/hacdias/webdav
 services:
   webdav:
     image: hacdias/webdav:latest
