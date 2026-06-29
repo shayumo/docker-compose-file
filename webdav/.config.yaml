@@ -1,0 +1,26 @@
+# 全局默认设置
+address: 0.0.0.0
+port: 80
+auth: true
+tls: false
+
+# 用户个性化配置
+users:
+  - username: admin
+    password: admin_secure_password # 管理员密码
+    scope: /data                    # 管理员可以访问全局 /data 目录
+    modify: true
+
+  - username: userA
+    password: userA_secure_password # 用户A密码
+    scope: /data/userA              # 限制用户A只能看到和操作 /data/userA 目录
+    modify: true
+
+  - username: userB
+    password: userB_secure_password # 用户B密码
+    scope: /data/userB              # 限制用户B只能看到和操作 /data/userB 目录
+    modify: true
+    # 还可以给特定用户加规则（例如：userB 只能看，不能删除/修改某个公共文件夹）
+    rules:
+      - path: /data/userB/public_read_only
+        modify: false               # 针对这个路径关闭修改权限
