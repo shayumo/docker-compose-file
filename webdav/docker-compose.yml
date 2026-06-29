@@ -5,7 +5,6 @@ services:
     container_name: webdav
     restart: always
     user: "1000:1000"
-    # 端口映射
     ports:
       - "${WEBDAV_PORT:-16065}:16065"
     # 挂载配置文件和数据目录
