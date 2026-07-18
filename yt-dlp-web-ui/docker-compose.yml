@@ -1,0 +1,16 @@
+services:
+  yt-dlp-webui:
+    image: ghcr.io/marcopiovanello/yt-dlp-web-ui:latest
+    environment:
+      - HTTP_PROXY=socks5://192.168.1.110:3066
+      - HTTPS_PROXY=socks5://192.168.1.110:3066
+      - SOCKS_PROXY=socks5://192.168.1.110:3066
+      - NO_PROXY=localhost,127.0.0.1
+    ports:
+      - 3033:3033
+    volumes:
+      - ${DOWNLOADS_DIR:-./downloads}:/downloads # replace <your dir> with a directory on your host system
+      - ${CONFIG_DIR:-./config}:/config # replace <your dir> with a directory on your host system
+    healthcheck:
+      test: curl -f http://localhost:3033 || exit 1
+    restart: unless-stopped
