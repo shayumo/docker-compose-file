@@ -2,9 +2,9 @@ services:
   yt-dlp-webui:
     image: ghcr.io/marcopiovanello/yt-dlp-web-ui:latest
     environment:
-      - HTTP_PROXY=socks5://192.168.1.110:3066
-      - HTTPS_PROXY=socks5://192.168.1.110:3066
-      - SOCKS_PROXY=socks5://192.168.1.110:3066
+      - HTTP_PROXY=socks5://192.168.1.110:4067
+      - HTTPS_PROXY=socks5://192.168.1.110:4067
+      - SOCKS_PROXY=socks5://192.168.1.110:4067
       - NO_PROXY=localhost,127.0.0.1
     ports:
       - 3033:3033
